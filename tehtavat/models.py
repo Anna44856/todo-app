@@ -13,20 +13,20 @@ class Tehtava(models.Model):
         Kategoria,
         on_delete=models.RESTRICT,
         null=True,
+        blank=True,
     )
+    tehty = models.BooleanField(default=False)
 
     # on_delete-säännöt
-    # 
+    #
     # CASCADE: Kun kategoria poistetaan,
     #   niin poistetaan kaikki sen tehtävät
     # RESTRICT: Kategoriaa ei anneta poistaa
     #   ennen kuin tehtävät on (käsin) poistettu
-    # SET_NULL: Jos kategoria poistettan,
-    #   niin sen kaikki tehtävät saavat kategorian arvoksi oletusarvo
-    # SET_DEFAULT: JOS kategoria poistetaan,
-    #   niin sen kaikkitehtävät saavat kategorian arvoksi oletusarvo
-
+    # SET_NULL: Jos kategoria poistetaan,
+    #   niin sen kaikki tehtävät saavat kategorian arvoksi NULL
+    # SET_DEFAULT: Jos kategoria poistetaan,
+    #   niin sen kaikki tehtävät saavat kategorian arvoksi oletusarvon
 
     def __str__(self):
         return self.otsikko
-
